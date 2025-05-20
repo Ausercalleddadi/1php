@@ -1,0 +1,248 @@
+
+:root {
+  --primary: #4f46e5;
+  --primary-light: #818cf8;
+  --bg: #f9fafb;
+  --text: #1f2937;
+  --white: #ffffff;
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --accent: #f59e0b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right, #eef2ff, #fdf4ff);
+  color: var(--text);
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: var(--primary);
+  color: var(--white);
+  padding: 2rem;
+  display: flex;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  animation: slideDown 0.6s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap:wrap;
+  gap: 1rem;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background-color: var(--primary-light);
+}
+
+.container {
+    display:flex;
+    max-width: 55%;
+    margin: auto;
+    margin-top: 2rem;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    box-shadow: 0px 0px 100px rgb(206, 206, 206);
+    
+}
+
+.section1{
+    width:40%;
+    background: linear-gradient(160deg,#1e14e6,25%,#a7e0f1);
+}
+
+.section {
+  background: var(--white);
+  padding: 2rem;
+  width:60%;
+  
+  
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #f3f4f6;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+}
+
+button {
+  /* justify-content: center; 
+  align-self: center;
+  align-items: center; */
+  background: linear-gradient(160deg,#1e14e6,#7c89ff);
+  color: var(--white);
+  padding: 0.9rem 1.8rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+    
+  transform: scale(1.1);
+}
+
+.link-button {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.link-button:hover {
+  background: var(--primary-light);
+}
+
+.post {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  background-color: #ffffff;
+  box-shadow: var(--card-shadow);
+}
+
+.post h2 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  color: #9ca3af;
+  margin-top: 3rem;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  button, .link-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.name{
+    display:flex;
+    gap: 10%;
+    width:100%;
+}
+
+.for{
+    margin-top:1.5rem;
+}
+.name input { 
+    width:100%;
+}
+
+.name>div{
+    width:50%;
+    display:block;
+}
+
+.password  li { 
+    list-style: none; 
+    margin: 1em 0; 
+}
+.password li:before { 
+    content: '\2713';
+    display: inline-block; 
+    position:relative; 
+    top: -4px; 
+    width: 14px; 
+    height: 14px; 
+    margin-right: 8px; 
+    padding: 2px;
+    color:green;
+	font-size: 12px; 
+    font-weight: bold; 
+    line-height: 14px;
+    border: 2px solid green; 
+    border-radius: 50%; 
+    text-align: center; 
+}
+
+.sign-text-main{line-height: 250%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-text-main h1{
+    font-size: 2rem;
+}
+.sign-text-main p{
+    font-size: 1.5rem;
+}
+
+
