@@ -409,12 +409,14 @@ $registration = new UserRegistration();
                 <div class="form-row">
                     <div class="form-group">
                         <div class="input-wrapper">
+                            <label class="form-label">votre prenom</label>
                             <i class="fas fa-user input-icon"></i>
                             <input type="text" class="form-input" name="firstName" placeholder="Votre prénom" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-wrapper">
+                            <label class="form-label">Votre nom</label>
                             <i class="fas fa-user input-icon"></i>
                             <input type="text" class="form-input" name="lastName" placeholder="Votre nom" required>
                         </div>
@@ -473,7 +475,7 @@ $registration = new UserRegistration();
                 </button>
             </form>
             
-            <div class="divider">
+            <!-- <div class="divider">
                 <span>Ou inscrivez-vous avec</span>
             </div>
             
@@ -486,7 +488,7 @@ $registration = new UserRegistration();
                     <i class="fab fa-github github-icon"></i>
                     GitHub
                 </a>
-            </div>
+            </div> -->
         </div>
         
         <div class="purple-section">
