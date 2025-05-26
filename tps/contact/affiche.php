@@ -1,4 +1,8 @@
 <h2>Répertoire de contacts</h2>
+<form method="post">
+    <input type="text" name="search">
+    <button type="submit" name="se">chercher</button>
+</form>
 <table border="1">
     <tr>
         <th>ID</th>
@@ -8,16 +12,35 @@
         <th>Téléphone</th>
         <th>Actions</th>
     </tr>
-    <?php 
-    $username = 'souhail';
-    $db = 'localhost';
-    $password = 'souhail123';
 
-    $conn = new PDO("mysql:host=$db;dbname=tps",$username,$password);
+<?php
 
-    $query = $conn->prepare("select * from contact");
+$username = 'souhail';
+$db = 'localhost';
+$password = 'souhail123';
+
+$conn = new PDO("mysql:host=$db;dbname=tps",$username,$password);
+    if($_POST!=NULL){
+    if($_POST['search']===""){
+    $query = $conn->prepare("SELECT * from contact");
     $query -> execute();
     $res = $query ->fetchall();
+   
+    }
+    if($_POST['search']!==""){
+    $query = $conn->prepare("SELECT * from contact WHERE nom LIKE :nom or email like :email");
+    $query->bindParam(':nom',$nm);
+    $query->bindParam(':email',$nm);
+    $nm = "%".$_POST['search']."%";
+    $query -> execute();
+    $res = $query ->fetchall();
+   
+    }}
+ 
+
+    
+    
+    
     foreach ($res as $c){ 
        ?>
     <tr>
@@ -33,7 +56,8 @@
             </form>
         </td>
     </tr>
-    <?php  }
+    <?php  
+    }
     ?>
 </table>
 
@@ -69,7 +93,7 @@
 <?php
 
     if($_POST!=NULL){
-    var_dump($_POST);
+    
     
     $query = $conn->prepare("UPDATE CONTACT SET prenom=:prenom ,nom=:nom ,email=:email ,telephone=:telephone WHERE id=:id;");
     $query->bindParam(':prenom',$name1);
