@@ -50,37 +50,49 @@
 
         if($_GET['m']!=NULL){
             $id = $_GET['m'];
+            $_GET=NULL;
             $query = $conn->prepare("SELECT * FROM contact WHERE id=:id;");
             $query->bindParam(':id',$id);
             $query->execute();
             $res = $query->fetch();
-            var_dump($res);
-        
+      
         ?>
 
-<form method="get">
+<form method="post">
     <input name="prenom"               value=<?php echo $res['prenom']?>>
     <input name="nom"                  value=<?php echo $res['nom']?>>
     <input name="email" type="email"   value=<?php echo $res['email']?>>
     <input name="telephone"            value=<?php echo $res['telephone']?>>
-    <button type="submit">mise a jour</button>
+    <button type="submit" name="j" value="l">mise a jour</button>
 </form>
 
 <?php
-if($_GET!=NULL){
-    $query = $conn->prepare("UPDATE CONTACT set prenom=:prenom,nom=:nom,email=:email,telephone=:telephone where id=:id  ;");
+
+    if($_POST!=NULL){
+    var_dump($_POST);
+    
+    $query = $conn->prepare("UPDATE CONTACT SET prenom=:prenom ,nom=:nom ,email=:email ,telephone=:telephone WHERE id=:id;");
     $query->bindParam(':prenom',$name1);
     $query->bindParam(':nom',$name2);
     $query->bindParam(':email',$email);
     $query->bindParam(':telephone',$phone);
     $query->bindParam(':id',$id);
-    $name1 = $_GET['prenom'];
-    $name2 = $_GET['nom'];
-    $email = $_GET['email'];
-    $phone = $_GET['telephone'];
+    $name1 = $_POST['prenom'];
+    $name2 = $_POST['nom'];
+    $email = $_POST['email'];
+    $phone = $_POST['telephone'];
+    echo $name1; 
+    echo $name2;
+    echo $email;
+    echo $phone;
+    echo $id;
     $query->execute();
-     }}
+    header("location:affiche.php");
+    
+
+  
+   
+    }
+     }
  ?>
  
-        
-
