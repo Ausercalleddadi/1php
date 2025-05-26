@@ -1,4 +1,5 @@
 <?php include "dblogin.php";
+      include "add.php";
 $conn = connexion();
 ?>
 
@@ -29,6 +30,7 @@ if($_POST!=NULL){
 
     else if(in_array("ac",$tst)){
     add($conn);
+    var_dump($_POST);
     }
 
     else if(in_array("ad",$tst)){
@@ -42,32 +44,22 @@ if($_POST!=NULL){
     $query->bindParam(':email', $email);
     $query->bindParam(':telephone', $phone);
     $query->execute();
-    $tst = NULL;  
     }
-
-    else if(array_key_exists("p",$_POST)){
-    delete($conn,$_POST['p']);
-    $_POST = NULL;
-    }
-
-    else if(array_key_exists("m",$_POST)){
-    mod($conn,$_POST['m']);
-    $_POST = NULL;
-    }
-
-    else if(in_array("maj",$_POST)){
-    $name1 = $_POST['prenom'];
-    $name2 = $_POST['nom'];
-    $email = $_POST['email'];
-    $phone = $_POST['telephone'];
-    $id = $_POST['id'];
-    $query = $conn->prepare("UPDATE CONTACT SET prenom=:prenom ,nom=:nom ,email=:email ,telephone=:telephone WHERE id=:id;");
-    $query->bindParam(':prenom',$name1);
-    $query->bindParam(':nom',$name2);
-    $query->bindParam(':email',$email);
-    $query->bindParam(':telephone',$phone);
-    $query->bindParam(':id',$id); 
-    $query->execute();
     
+    $tst = NULL;    
     }
-} 
+    
+
+
+if($_GET!=NULL){
+     if(array_key_exists("p",$_GET)){
+    delete($conn,$_GET['p']);
+    $_GET = NULL;
+    }
+
+    else if(array_key_exists("m",$_GET)){
+    mod($conn,$_GET['m']);
+    $_GET = NULL;
+    }}
+ ?>
+ 
