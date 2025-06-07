@@ -25,9 +25,11 @@ if($_POST!=NULL){
 
     else if(in_array("ac",$tst)){
     add();
+    
     }
 
     else if(in_array("ad",$_POST)){
+    testinput($conn,$_POST['debut'],$_POST['fin'],$_POST['date']);
     $name1 = $_POST['nom'];
     $name2 = $_POST['date'];
     $email = $_POST['debut'];
@@ -39,7 +41,6 @@ if($_POST!=NULL){
     $query->bindParam(':debut', $email);
     $query->bindParam(':fin', $phone);
     $query->bindParam(':description', $desc);
-    $query->execute();
     $tst = NULL;  
     }
 
@@ -60,14 +61,13 @@ if($_POST!=NULL){
     $phone = $_POST['fin'];
     $desc = $_POST['description'];
     $id = $_POST['id'];
-    $query = $conn->prepare("UPDATE reservation SET nom=:nom ,date=:datee ,debut=:debut ,fin=:fin , description=:descritpion  WHERE id=:id;");
+    $query = $conn->prepare("UPDATE reservation SET nom=:nom ,date=:datee ,debut=:debut ,fin=:fin , description=:de  WHERE id=:id;");
     $query->bindParam(':nom', $name1);
     $query->bindParam(':datee', $name2);
     $query->bindParam(':debut', $email);
     $query->bindParam(':fin', $phone);
-    $query->bindParam(':description', $desc);
+    $query->bindParam(':de', $desc);
     $query->bindParam(':id',$id); 
-    var_dump($query);
     $query->execute();
     
     }

@@ -93,4 +93,18 @@ function add(){
 }
 
 
+function testinput($conn,$in,$out,$date){
+    $tet = true;
+    $query = $conn->prepare("SELECT debut,fin FROM reservation");
+    $query -> execute();
+    $times = $query -> fetchall();
+    foreach($times as $time){
+        var_dump($time);
+        if($time['fin']>$time['debut'])
+         echo "true";
+        echo "<br>";
+    }
+}
+
+
 
